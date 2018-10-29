@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
 import thread
+import threading
 import time
 
 maxThreads = 10
@@ -28,7 +29,6 @@ except:
 
 while 1:
    time.sleep(2)
-   for t in threads:
-     thread.status # not right, need to know how to do that....
    print(threads)
+   print("Number of Threads %s" % thread._count())
    pass
