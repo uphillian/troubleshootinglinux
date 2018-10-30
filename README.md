@@ -28,3 +28,47 @@ There are environment variables which can be used to modify the behaviour of the
 
 ### LD&#95;DEBUG
 
+### LD&#95;PRELOAD
+
+## ltrace
+
+library trace, show library calls
+
+```
+# ltrace ./getip
+```
+
+## Name Service Switch (nss)
+
+System used in POSIX systems to enumerate subsystems with various backends.  The system allows greater flexibility than utilizing a single file such as /etc/hosts, /etc/group, /etc/passwd
+
+## Boot Process
+
+## Kernel File Systems
+
+## /proc /sys 
+
+/proc/cmdline
+
+processes, pids
+
+etc
+
+
+## ELF
+
+
+## Tools
+
+### lsof
+
+## Processes
+
+fork
+clone
+exec
+
+
+## Everything is a file
+
+
