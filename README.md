@@ -42,33 +42,61 @@ library trace, show library calls
 
 System used in POSIX systems to enumerate subsystems with various backends.  The system allows greater flexibility than utilizing a single file such as /etc/hosts, /etc/group, /etc/passwd
 
+Configured from /etc/nsswitch.conf
+
 ## Boot Process
+
+Sector 0 loads stage 1 loader, stage 1 loads stage 2 (just a memory thing, stage 1 is limited to 512 bytes, the size of a sector).  Stage 2 loads the kernel and sets the root filesystem.
+
+The kernel is then exec'd, taking over as the privileged process.
 
 ## Kernel File Systems
 
-## /proc /sys 
+The kernel exposes parts of itself with special filesystems, `/proc`, `/sys`
 
-/proc/cmdline
+### /proc
 
-processes, pids
+Process management.  Information about running processes is shown in the /proc mount.  You can see the cmdline used to boot the system with /proc/cmdline.
 
-etc
+| file    | contents |
+|---------|----------|
+| cmdline | complete command line and arguments |
+| environ | environment variables |
+| maps | mapped memory regions | 
 
 
 ## ELF
 
+*Executable and Linkable Format*
+
+https://en.wikipedia.org/wiki/Executable_and_Linkable_Format
 
 ## Tools
 
-### lsof
+## Working with Processes
 
-## Processes
+### doublefork.py
 
-fork
-clone
-exec
+This will fork a process, which forks again and then the grandparent and parent both die.  The grandchild becomes an orphan of the system and is scooped up by init.
 
+### fd.py
+
+This demonstrates file descriptors, the process starts, opens a file and then immediately unlinks it.  The process continues to use the file that is deleted.
+
+### fork.py
+
+This demonstrates a process forking.
+
+### thread.py
+
+This will create a process which spawns a number of threads
+
+### zombie.py
+
+This will create a process that forks and waits for the child to send a signal.  The child dies without sending the signal.  The parent is left hanging waiting.  The kernel then hangs onto the child waiting for it to send the signal...it never will, it's dead.  The child is the walking dead, a zombie.
 
 ## Everything is a file
+
+Use the `file` command to examine files on the system.  Use mkfifo to make named fifo's.
 
 
