@@ -61,7 +61,16 @@ Process management.  Information about running processes is shown in the /proc m
 | file    | contents |
 |---------|----------|
 | cmdline | complete command line and arguments |
+| cwd | current working directory |
 | environ | environment variables |
+| fd  | directory containing file descriptors open by the process |
+| fd/0 | standard input |
+| fd/1 | standard input |
+| fd/2 | standard output |
+| fd/3 | standard error |
+| io | IO Used by Process |
+| limits | PAM Limits (hard/soft) |
+| map_files | memory regions with associated files |
 | maps | mapped memory regions | 
 
 
