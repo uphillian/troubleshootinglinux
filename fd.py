@@ -1,7 +1,12 @@
 #!/usr/bin/env python
-import time
 import datetime
-with open('/srv/fd','w') as f:
+import os
+import time
+filename='/srv/fd'
+with open(filename,'w') as f:
+  if os.path.isfile(filename):
+    print("Inode of %s is %s" % filename,os.stat(filename).st_ino
+    os.unlink(filename)
   while True:
     time.sleep(1)
     f.write("%s\n" % str(datetime.datetime.now()))
