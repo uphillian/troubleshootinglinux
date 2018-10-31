@@ -2,6 +2,53 @@
 
 https://goo.gl/qc8rHw
 
+## Troubleshooting Basics
+
+First rule of troubleshooting is *TRUST NO ONE*
+
+### Local Troubleshooting
+
+* Have a Plan
+
+  Know how things are broken.  Know when things are fixed.  Know requirements.
+
+* Only change 1 thing at a time.
+
+  test after each change.  rollback any change that does not improve the situation.
+
+* Gather evidence.
+
+  Read Logs, look in /proc. Check filesystem usage (data space and inode space, df -h, df -i)
+
+* Check the basics first
+
+  Verify permissions
+
+* Start tracing processes.
+
+  ltrace, strace
+
+### Remote Troubleshooting
+
+* Verify the Problem
+
+* Read Logs
+
+* Check resolution
+
+  ```getent hosts <hostname>```
+  ```ping <hostname>```
+
+* Check ports
+
+  ```nc hostname port```
+
+* Check certificates
+
+  Verify permissions to access certificates.  Verify certificate and private_key have the same modulus (are calculated from the same cryptographic information `openssl rsa -modulus` and `openssl x509 -modulus`).  Verify the certificate is not expired (`openssl verify`), if a CRL is in play, you need to ensure that the certificate is not revoked using `openssl verify -crl_check`)
+
+* traceroute / ping / tcpdump
+ 
 ## System Libraries
 
 System Libraries contain the wrappers for system calls, the code for system calls is contained within the kernel.  The sytem library only contains the "shim" code, code to load registers with the correct values and then request the kernel perform the operation.
@@ -124,48 +171,3 @@ An inode is used to contain the data of a file.  On Linux the names of files are
 
 When you delete a file in linux, you only reduce the link count on the file by 1.  When the link count reaches 0, the file is reaped from the filesystem, it is eligible to be replaced.  
 
-## Troubleshooting Basics
-
-### Local Troubleshooting
-
-* Have a Plan
-
-  Know how things are broken.  Know when things are fixed.  Know requirements.
-
-* Only change 1 thing at a time.
-
-  test after each change.  rollback any change that does not improve the situation.
-
-* Gather evidence.
-
-  Read Logs, look in /proc. Check filesystem usage (data space and inode space, df -h, df -i)
-
-* Check the basics first
-
-  Verify permissions
-
-* Start tracing processes.
-
-  ltrace, strace
-
-### Remote Troubleshooting
-
-* Verify the Problem
-
-* Read Logs
-
-* Check resolution
-
-  ```getent hosts <hostname>```
-  ```ping <hostname>```
-
-* Check ports
-
-  ```nc hostname port```
-
-* Check certificates
-
-  Verify permissions to access certificates.  Verify certificate and private_key have the same modulus (are calculated from the same cryptographic information `openssl rsa -modulus` and `openssl x509 -modulus`).  Verify the certificate is not expired (`openssl verify`), if a CRL is in play, you need to ensure that the certificate is not revoked using `openssl verify -crl_check`)
-
-* traceroute / ping / tcpdump
- 
