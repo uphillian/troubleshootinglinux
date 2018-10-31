@@ -4,7 +4,9 @@ https://goo.gl/qc8rHw
 
 ## Troubleshooting Basics
 
-First rule of troubleshooting is *TRUST NO ONE*
+First rule of troubleshooting is *TRUST NO ONE*. 
+
+Always verify the problem, verify it *did* work before.
 
 ### Local Troubleshooting
 
