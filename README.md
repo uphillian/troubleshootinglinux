@@ -51,6 +51,10 @@ Always verify the problem, verify it *did* work before.
 
 * traceroute / ping / tcpdump
  
+___
+
+# Linux Knowledge
+
 ## System Libraries
 
 System Libraries contain the wrappers for system calls, the code for system calls is contained within the kernel.  The sytem library only contains the "shim" code, code to load registers with the correct values and then request the kernel perform the operation.
