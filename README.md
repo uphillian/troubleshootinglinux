@@ -127,9 +127,11 @@ When you delete a file in linux, you only reduce the link count on the file by 1
 ## Troubleshooting Basics
 
 * Have a Plan
+
   Know how things are broken
 
 * Only change 1 thing at a time.
+
   test after each change.  rollback any change that does not improve the situation.
 ## OpenSSL
 
