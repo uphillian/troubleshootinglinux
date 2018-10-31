@@ -137,6 +137,7 @@ https://en.wikipedia.org/wiki/Executable_and_Linkable_Format
 
 |Tool  | Usage |
 |------|------|
+| gdb | GNU Debugger |
 | getent | lookup NSS mapped information |
 | lsof | list open files |
 | ltrace | library call trace |
@@ -144,6 +145,7 @@ https://en.wikipedia.org/wiki/Executable_and_Linkable_Format
 | runuser | Run process as another user |
 | su | Switch User  |
 | strace | system call trace |
+| valgrind | Debugging and Profiling |
 
 ## Working with Processes
 
