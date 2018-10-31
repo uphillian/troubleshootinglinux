@@ -88,8 +88,9 @@ https://en.wikipedia.org/wiki/Executable_and_Linkable_Format
 | lsof | list open files |
 | ltrace | library call trace |
 | nc | Network Swiss Army Knife, connect to ports, listen on ports |
+| runuser | Run process as another user |
+| su | Switch User  |
 | strace | system call trace |
-
 
 ## Working with Processes
 
@@ -116,5 +117,21 @@ This will create a process that forks and waits for the child to send a signal. 
 ## Everything is a file
 
 Use the `file` command to examine files on the system.  Use mkfifo to make named fifo's.
+
+## inode
+
+An inode is used to contain the data of a file.  On Linux the names of files are contained in directories.  Inodes can be metadata inodes or data inodes.  Metadata inodes contain permissions and timestamps.  Data inodes contain data.  Directories are lists of metadata inodes.  
+
+When you delete a file in linux, you only reduce the link count on the file by 1.  When the link count reaches 0, the file is reaped from the filesystem, it is eligible to be replaced.  
+
+## Troubleshooting Basics
+
+* Have a Plan
+  Know how things are broken
+
+* Only change 1 thing at a time.
+  test after each change.  rollback any change that does not improve the situation.
+## OpenSSL
+
 
 
