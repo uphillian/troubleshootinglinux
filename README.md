@@ -82,6 +82,15 @@ https://en.wikipedia.org/wiki/Executable_and_Linkable_Format
 
 ## Tools
 
+|Tool  | Usage |
+|------|------|
+| getent | lookup NSS mapped information |
+| lsof | list open files |
+| ltrace | library call trace |
+| nc | Network Swiss Army Knife, connect to ports, listen on ports |
+| strace | system call trace |
+
+
 ## Working with Processes
 
 ### doublefork.py
