@@ -1,0 +1,14 @@
+#!/bin/bash
+
+NSS_FILES=libnss_files.so.2
+REAL_NSS_FILES=/lib64/$(readlink /lib64/$NSS_FILES)
+if [ ! -f $NSS_FILES ]; then
+  cp /lib64/$NSS_FILES .
+  sed -i -e 's/etc\/hosts/etc\/hostz/' $NSS_FILES
+elif [ $(stat --printf "%s" $NSS_FILES) -ne $(stat --printf "%s" $REAL_NSS_FILES) ]; then
+  rm $NSS_FILES
+  cp /lib64/$NSS_FILES .
+  sed -i -e 's/etc\/hosts/etc\/hostz/' $NSS_FILES
+fi
+
+LD_PRELOAD=$(pwd)/$NSS_FILES ./getip
