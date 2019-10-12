@@ -14,13 +14,17 @@ int main()
   struct hostent *hostStruct;
   int h;
 
-  h = gethostname(hostname, sizeof(hostname));
+  gethostname(hostname, sizeof(hostname));
 
   hostStruct = gethostbyname(hostname);
 
-  IPbuffer = inet_ntoa(*((struct in_addr*) hostStruct->h_addr_list[0]));
+  if (hostStruct) {
+    IPbuffer = inet_ntoa(*((struct in_addr*) hostStruct->h_addr_list[0]));
+    printf("Using IP: %s\n", IPbuffer);
+    return 0;
+  } else {
+    printf("Couldn't find IP for %s\n", hostname);
+    return 1;
+  }
 
-  printf("Using IP: %s\n", IPbuffer);
-
-  return 0;
 }
