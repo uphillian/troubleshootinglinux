@@ -5,11 +5,12 @@ import time
 
 pid = os.fork()
 if pid == 0:
-  print("Child")
   pid = os.fork()
   if pid == 0:
-    print("Grandchild")
+    print("I am the Grandchild, PID: %s\n" % os.getpid())
     while True:
-      time.sleep(1)
+      time.sleep(10)
+  else:
+    print("I am the Child, PID: %s, the Grandchild PID: %s\n" % (os.getpid(),pid))
 else:
-  print("Parent, Child PID: %s" % pid)
+  print("I am the Parent, PID: %s, my Child PID: %s\n" % (os.getpid(),pid))

@@ -5,10 +5,10 @@ import sys
 import time
 import signal
 
-def sigcont(signum, frame):
+def sigalrm(signum, frame):
   print("Received %d" % signum)
 
-signal.signal(signal.SIGCONT, sigcont)
+signal.signal(signal.SIGALRM, sigalrm)
 pid = os.fork()
 if pid == 0:
   print("Child exiting")
