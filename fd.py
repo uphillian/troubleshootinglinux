@@ -2,10 +2,10 @@
 import datetime
 import os
 import time
-filename='/srv/fd'
+filename='fd-example'
 with open(filename,'w') as f:
   if os.path.isfile(filename):
-    print("Inode of %s is %s" % filename,os.stat(filename).st_ino
+    print("Inode of %s is %s" % (filename,os.stat(filename).st_ino))
     os.unlink(filename)
   while True:
     time.sleep(1)

@@ -4,3 +4,4 @@ do
   echo -n "$i "
   sleep 10 &
 done
+echo
